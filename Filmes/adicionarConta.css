@@ -1,0 +1,79 @@
+body{
+    margin: 0;
+    top: 0;
+    padding: 0;
+    background-color: black;
+}
+
+#adicionar{
+    margin: auto;
+    background-color: rgb(26, 26, 26);
+    color: white;
+    height: 600px;
+    margin-top: 80px;
+    width: 45%;
+    border-radius: 10px;
+}
+
+#sair{
+    text-decoration: none;
+    color: white;
+    margin-left: 640px;
+    font-size: 30px;
+}
+
+header{
+    text-align: center;
+}
+
+#colocarNome{
+    margin-left: 30px;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+hr{
+    width: 92%;
+}
+
+img{
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+}
+
+#nome{
+    background-color: black;
+    color: white;
+    width: 80%;
+    height: 60px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    margin: auto;
+}
+
+#crianca{
+    width: 65%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+#opcoes{
+    margin-top: 30px;
+    text-align: center;
+}
+
+#salvar{
+    width: 65%;
+    height: 60px;
+    border-radius: 10px;
+}
+
+#cancelar{
+    background-color: rgb(26, 26, 26);
+    color: white    ;
+    width: 65%;
+    height: 60px;
+    border-radius: 10px;
+}

@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+    top: 0;
+    padding: 0;
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+
+img{
+    width: 250px;
+}
+
+h1{
+    color: red;
+}
+
+h2{
+    color: red
+}
+
+h3{
+    width: 500px;
+    margin: auto;
+}
+
+a{
+    color: red;
+    text-decoration: none;
+    margin-left: auto;
+    font-size: 20px;
+}
