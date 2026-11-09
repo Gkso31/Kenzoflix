@@ -41,3 +41,10 @@ td:hover img{
     border-style: solid;
     border-color: white;
 }
+
+.versao {
+    color: #adabab;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin-top: 24px;
+}
