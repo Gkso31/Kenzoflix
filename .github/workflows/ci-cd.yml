@@ -1,0 +1,62 @@
+name: CI/CD - Kenzoflix
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    name: CI - Verificar e preparar o site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fazer checkout do projeto
+        uses: actions/checkout@v7
+
+      - name: Configurar Python para as verificacoes
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+
+      - name: Verificar paginas e referencias locais
+        run: python scripts/validar_site.py
+
+      - name: Preparar os arquivos da publicacao
+        run: |
+          mkdir -p _site
+          cp *.html *.css _site/
+          cp -R Fotos Imagens _site/
+          touch _site/.nojekyll
+
+      - name: Enviar o site validado para o deployment
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  cd:
+    name: CD - Publicar no GitHub Pages
+    needs: ci
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Publicar o site validado
+        id: deployment
+        uses: actions/deploy-pages@v4
